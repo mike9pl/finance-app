@@ -1,0 +1,277 @@
+:root {
+  color-scheme: light dark;
+  --main-bg: #f4f7fa;
+  --section-bg: #fff;
+  --text-color: #222;
+  --nav-bg: #f5f7fa;
+  --nav-link: #222;
+  --nav-link-hover: #0056b3;
+  --nav-link-bg-hover: #e3eaff;
+  --box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --border-color: #ccc;
+  --positive: #28a745;
+  --negative: #dc3545;
+  --primary: #007bff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg: #181c1f;
+    --section-bg: #23272b;
+    --text-color: #f4f7fa;
+    --nav-bg: #23272b;
+    --nav-link: #f4f7fa;
+    --nav-link-hover: #90c2ff;
+    --nav-link-bg-hover: #222e3a;
+    --box-shadow: 0 2px 12px rgba(0,0,0,0.32);
+    --border-color: #444;
+    --positive: #4be37a;
+    --negative: #ff5c5c;
+    --primary: #339cff;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text-color);
+  padding: 32px;
+  max-width: 800px;
+  margin: auto;
+}
+
+header {
+  background: var(--section-bg);
+  border-radius: 16px;
+  margin-bottom: 32px;
+  box-shadow: var(--box-shadow);
+  padding: 32px 32px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.minimal-banner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 0 16px 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  justify-content: flex-start;
+}
+
+.minimal-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.minimal-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.minimal-nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 32px;
+  background: var(--nav-bg);
+  border-radius: 48px;
+  padding: 20px 48px;
+  margin-top: 18px;
+  box-shadow: var(--box-shadow);
+  list-style: none;
+}
+
+.minimal-nav li {
+  margin: 0;
+}
+
+.minimal-nav li a {
+  display: block;
+  padding: 18px 40px;
+  border-radius: 32px;
+  color: var(--nav-link);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+  letter-spacing: 0.02em;
+}
+
+.minimal-nav li a:hover,
+.minimal-nav li a:focus {
+  background: var(--nav-link-bg-hover);
+  color: var(--nav-link-hover);
+  outline: none;
+}
+
+/* SECTION CONTAINERS - consistent look */
+#dashboard,
+#budget-settings,
+#transaction-section form,
+#history-section {
+  background-color: var(--section-bg);
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 32px;
+  min-width: 0;
+}
+
+section h2 {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+#dashboard p,
+#budget-settings p,
+#transaction-section p {
+  font-size: 1.15rem;
+  margin: 14px 0;
+}
+
+#pieChart, #lineChart {
+  display: block;
+  margin: 24px auto 0 auto;
+  width: 100%;
+  max-width: 500px;
+  background: var(--main-bg);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  padding: 8px;
+}
+
+/* FORM STYLES */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 0;
+}
+
+form input,
+form select {
+  padding: 14px;
+  font-size: 1.15rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--main-bg);
+  color: var(--text-color);
+}
+
+form button, #subscribe {
+  background-color: var(--primary);
+  color: var(--section-bg);
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: 700;
+}
+
+form button:hover {
+  background-color: var(--nav-link-hover);
+}
+
+form button:disabled,
+button:disabled {
+  background-color: #cccccc;
+  color: #888888;
+  cursor: not-allowed;
+  opacity: 0.7;
+  border: none;
+}
+
+/* TRANSACTION LIST */
+ul#transactions {
+  list-style: none;
+  padding: 0;
+}
+
+ul#transactions li {
+  background-color: var(--section-bg);
+  padding: 16px 22px;
+  margin-bottom: 14px;
+  border-left: 6px solid var(--positive);
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  font-size: 1.08rem;
+  color: var(--text-color);
+}
+
+ul#transactions li.negative {
+  border-left-color: var(--negative);
+}
+
+/* ACCESSIBILITY & FOCUS */
+a:focus, button:focus, input:focus, select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* BODY & TYPOGRAPHY */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  body {
+    padding: 8px;
+    max-width: 100vw;
+  }
+  #dashboard,
+  #budget-settings,
+  #transaction-section form,
+  #history-section {
+    padding: 12px;
+    margin-bottom: 18px;
+  }
+  .minimal-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 0 0 6px 0;
+  }
+  .minimal-title {
+    font-size: 1.1rem;
+  }
+  .minimal-nav {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 24px;
+  }
+  .minimal-nav li a {
+    padding: 12px 18px;
+    font-size: 1.08rem;
+  }
+  #pieChart, #lineChart {
+    max-width: 100%;
+    padding: 2px;
+  }
+}
